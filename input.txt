@@ -1,0 +1,9 @@
+MiniGPT is a tiny language model experiment.
+A language model learns patterns in text and predicts what might come next.
+The small model reads examples, learns from them, and generates new text one character at a time.
+Learning takes practice. Good experiments change one setting at a time and compare the results.
+A transformer uses attention to decide which earlier tokens are useful for predicting the next token.
+This project is for learning how neural language models work. Its tiny sample data cannot teach broad knowledge.
+Hello there. Welcome to MiniGPT. We are learning about language, computers, science, and creativity.
+The cat sat on the mat. The dog ran through the garden. A bird sang beside the window.
+In a small lab, a curious student builds a model, tests an idea, and improves the code.

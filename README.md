@@ -1,59 +1,59 @@
-# MiniGPT 🧠
+# MiniGPT v2 🧠
 
-A tiny GPT-style language model trained from scratch. It uses character-level tokenization, causal self-attention, transformer blocks, and next-character prediction. It is a real neural model, not a wrapper around an online AI API.
+A small GPT-style language model built with PyTorch. This version uses a **byte-level tokenizer**, causal self-attention, residual transformer blocks, validation loss reporting, gradient clipping, top-k sampling, and saved checkpoints. It is a neural language model trained from scratch, not an API wrapper.
 
-## Install
+## Quick start
 
-Python 3.10+ recommended. In a terminal in this repository:
+Python 3.10+ recommended.
 
-```bash
+\`\`\`powershell
 python -m venv .venv
-```
-
-Windows PowerShell:
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-macOS/Linux:
-```bash
-source .venv/bin/activate
-```
-
-Install PyTorch:
-```bash
+.venv\Scripts\activate
 pip install -r requirements.txt
-```
-
-## Train
-
-Edit `input.txt` and add text you have permission to use. Then run:
-
-```bash
 python train.py
-```
+\`\`\`
 
-The trained weights are saved to `minigpt.pt`.
+The default configuration has 4 transformer blocks, 4 attention heads, and 128-dimensional embeddings. It trains for 2,000 steps and saves \`minigpt.pt\`.
 
 ## Generate text
 
-After training, run:
+After training:
 
-```bash
-python train.py --generate "MiniGPT"
-```
+\`\`\`powershell
+python train.py --generate "Once upon a time"
+\`\`\`
 
-Train longer with:
-```bash
-python train.py --steps 2000
-```
+Adjust length and randomness:
 
-## What to expect
+\`\`\`powershell
+python train.py --generate "Hello" --new-tokens 500 --temperature 0.7
+\`\`\`
 
-The included dataset is only a tiny demo, so the model will produce limited, often nonsensical text. Use a larger clean text file for better experiments. This is a learning project, not a replacement for ChatGPT. It runs on CPU and uses CUDA automatically when available. No API key is needed.
+## Train on more data
 
-## Files
+Replace \`input.txt\` with a larger UTF-8 text file that you have permission to use. The model learns only from the data you give it. More varied, high-quality text generally helps, but this small model and training setup have limited capacity.
 
-- `train.py`: tokenizer, transformer architecture, training loop, text generation.
-- `input.txt`: starter training corpus.
-- `requirements.txt`: dependency list.
+\`\`\`powershell
+python train.py --data input.txt --steps 10000 --batch-size 32
+\`\`\`
+
+You can change the model size, for example:
+
+\`\`\`powershell
+python train.py --steps 5000 --n-layer 6 --n-embd 192 --n-head 6 --block-size 128
+\`\`\`
+
+Larger settings require more memory and time. The model automatically uses CUDA if PyTorch detects a compatible GPU; otherwise it runs on CPU.
+
+## Important limitations
+
+- The included sample dataset is intentionally tiny, so initial output will be weak or nonsensical.
+- This is a character-byte predictor, not an instruction-tuned assistant. It does not inherently know facts, follow chat roles, or reason like a large pretrained model.
+- Each time you train, the model starts from scratch. Generation loads the saved checkpoint.
+- Training data must be at least 64 bytes. The context size is automatically reduced for small datasets.
+
+## Project files
+
+- \`train.py\`: transformer, training loop, validation, checkpointing, and generation.
+- \`input.txt\`: small starter corpus. Replace it with your own larger dataset.
+- \`requirements.txt\`: PyTorch dependency.

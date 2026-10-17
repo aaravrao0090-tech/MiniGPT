@@ -1,9 +1,31 @@
-MiniGPT is a tiny language model experiment.
-A language model learns patterns in text and predicts what might come next.
-The small model reads examples, learns from them, and generates new text one character at a time.
-Learning takes practice. Good experiments change one setting at a time and compare the results.
-A transformer uses attention to decide which earlier tokens are useful for predicting the next token.
-This project is for learning how neural language models work. Its tiny sample data cannot teach broad knowledge.
-Hello there. Welcome to MiniGPT. We are learning about language, computers, science, and creativity.
-The cat sat on the mat. The dog ran through the garden. A bird sang beside the window.
-In a small lab, a curious student builds a model, tests an idea, and improves the code.
+MiniGPT is a small language model project. It learns patterns from examples and predicts the next byte in a sequence. A language model does not automatically understand the world. Its behavior depends on its architecture, training process, and examples.
+
+Computers represent information using bits and bytes. A byte contains eight bits and can represent values from zero to two hundred fifty five. Text is encoded into bytes so that a model can process it as numbers. The model transforms these numbers into vectors called embeddings. Position embeddings help the model keep track of order.
+
+A transformer block contains attention, normalization, and a feed-forward network. Attention compares each token with earlier tokens to estimate which context is useful. Causal masking prevents the model from looking at future tokens while it learns to predict them. Residual connections help information move through the network. Layer normalization can make training more stable.
+
+During training, the model sees a sequence and tries to predict the next byte at every position. The loss measures how surprising the correct next byte was under the model prediction. The optimizer changes the weights to reduce this loss. Training loss measures performance on examples used for learning. Validation loss measures performance on held-out examples and can help reveal overfitting.
+
+A good experiment changes one setting at a time. Record the number of training steps, the dataset size, the model size, and the validation loss. Compare results instead of guessing. A larger model is not always better. A model trained on a tiny dataset may memorize its examples without learning patterns that generalize.
+
+The scientific method begins with a question. Make a prediction, design a fair test, collect evidence, and explain what the evidence supports. If the results disagree with the prediction, revise the idea. Bugs are useful clues. Read error messages carefully and test small pieces before changing many things at once.
+
+A neural network has parameters called weights. At the beginning, these weights are initialized to small random values. Training gradually adjusts them. The same architecture with different data can learn different patterns. A checkpoint stores learned weights so training results can be reused later.
+
+Text generation starts with a prompt. The model predicts a probability distribution for the next byte, then selects a byte and appends it to the sequence. Temperature changes how concentrated the distribution is. Lower temperature usually makes choices less random. Top-k sampling restricts selection to a set of high-probability choices. Neither setting adds knowledge that the model never learned.
+
+A dataset should be relevant, varied, and legally usable. Remove accidental secrets and private information. Keep a backup before replacing the original file. Plain text is a simple format for experiments. Larger datasets need more training time, memory, and careful evaluation. Data quality can matter more than simply collecting more text.
+
+Python is a programming language used for scientific computing. PyTorch provides tensors, automatic differentiation, neural network layers, and optimizers. A tensor is a multi-dimensional array of numbers. A GPU can accelerate matrix operations when compatible hardware and software are installed. A CPU can still run small experiments.
+
+The purpose of MiniGPT is to make the core ideas visible. Start with a small working system, understand every part, and then improve it. Useful future upgrades include a subword tokenizer, learning-rate scheduling, larger licensed datasets, saving training progress, resuming from checkpoints, and a simple chat interface. Each upgrade should be tested before it becomes part of the main project.
+
+A chess player improves by studying positions, solving tactics, reviewing mistakes, and playing thoughtful games. In a similar way, a model improves through examples and feedback from a training objective. The analogy is imperfect: a neural network does not practice with human intention, and a lower loss does not guarantee reliable answers. Evaluation must match the task.
+
+In mathematics, a hypothesis can be checked with a proof or a calculation. In programming, a hypothesis can be checked with a test. In machine learning, it can be checked with validation data and carefully designed comparisons. Reliable conclusions come from evidence, not from the size of a model name.
+
+Hello and welcome to MiniGPT. We are exploring language, computation, science, art, and ideas. A curious student can build a small model, inspect its code, run an experiment, and learn why the output changes. Keep notes, ask precise questions, and make one improvement at a time.
+
+The garden is quiet after rain. Small drops rest on the leaves, and sunlight returns between the clouds. A curious cat watches a bird from the window. In a workshop, a student opens a notebook and writes down a new question. The best experiments begin with curiosity and become useful through patient testing.
+
+A model can produce fluent text that is inaccurate. Always check important claims against trustworthy sources. Do not treat generated text as proof. A language model predicts patterns; people must decide whether its output is correct, safe, and useful.
